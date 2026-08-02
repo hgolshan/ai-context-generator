@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Context Profile Generator</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f6f8fa; color: #24292f; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background: #fff; border: 1px solid #d0d7de; border-radius: 6px; padding: 32px; box-shadow: 0 3px 6px rgba(140,149,159,0.15); }
+        h1 { border-bottom: 1px solid #d0d7de; padding-bottom: 10px; font-size: 24px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: 600; margin-bottom: 8px; }
+        input, select, textarea { width: 100%; padding: 8px 12px; border: 1px solid #d0d7de; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+        textarea { height: 80px; resize: vertical; }
+        button { background-color: #1f883d; color: white; border: none; padding: 10px 16px; font-size: 14px; font-weight: 600; border-radius: 6px; cursor: pointer; }
+        button:hover { background-color: #1a7f37; }
+        .output-box { margin-top: 30px; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; padding: 16px; position: relative; }
+        pre { white-space: pre-wrap; word-wrap: break-word; font-family: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace; font-size: 13px; margin: 0; }
+        .copy-btn { position: absolute; top: 12px; right: 12px; background: #0969da; }
+        .copy-btn:hover { background: #0860ca; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🤖 AI Context Profile Generator</h1>
+    <p>Answer a few questions to build a ready-to-paste instruction profile for ChatGPT, Claude, or Gemini.</p>
+
+    <form id="profileForm">
+        <!-- General Questions -->
+        <div class="form-group">
+            <label for="role">Your Primary Role / Profession:</label>
+            <input type="text" id="role" placeholder="e.g., Network Engineer, Electrical Engineer, Project Manager">
+        </div>
+
+        <div class="form-group">
+            <label for="tools">Core Tools, Technologies, or Standards You Use Daily:</label>
+            <input type="text" id="tools" placeholder="e.g., Cisco, Linux, Docker, AutoCAD, IEEE Standards">
+        </div>
+
+        <div class="form-group">
+            <label for="tone">Preferred AI Response Style:</label>
+            <select id="tone">
+                <option value="Direct, precise, and highly technical. Lead with solutions.">Direct & Technical (No fluff, straight to solution)</option>
+                <option value="Educational and step-by-step with clear explanations.">Step-by-Step & Educational (Detailed explanations)</option>
+                <option value="Conversational, supportive, and engaging.">Conversational & Collaborative</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="constraints">What should the AI ALWAYS AVOID?</label>
+            <textarea id="constraints" placeholder="e.g., Do not repeat my prompt, skip generic intros/outros, do not use placeholder code."></textarea>
+        </div>
+
+        <button type="button" onclick="generateProfile()">Generate Profile</button>
+    </form>
+
+    <div class="output-box" id="outputContainer" style="display:none;">
+        <button class="copy-btn" onclick="copyToClipboard()">Copy to Clipboard</button>
+        <h3>Your Custom Instruction Profile:</h3>
+        <pre id="outputCode"></pre>
+    </div>
+</div>
+
+<script>
+function generateProfile() {
+    const role = document.getElementById('role').value || 'Professional';
+    const tools = document.getElementById('tools').value || 'Standard industry tools';
+    const tone = document.getElementById('tone').value;
+    const constraints = document.getElementById('constraints').value || 'None specified.';
+
+    const markdownOutput = 
+`### User Context & System Instructions
+
+**Background & Role:**
+- Role: ${role}
+- Primary Tools & Domain Stack: ${tools}
+
+**Response Style & Tone:**
+- ${tone}
+- Skip high-level summaries or basic definitions unless requested. Assume domain-level familiarity.
+
+**Constraints & Guidelines:**
+- ${constraints}
+- Output ready-to-use code, scripts, or configurations without truncation where applicable.`;
+
+    document.getElementById('outputCode').innerText = markdownOutput;
+    document.getElementById('outputContainer').style.display = 'block';
+}
+
+function copyToClipboard() {
+    const text = document.getElementById('outputCode').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Copied to clipboard!');
+    });
+}
+</script>
+
+</body>
+</html>
