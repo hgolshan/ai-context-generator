@@ -1,0 +1,56 @@
+{
+  "title": "🤖 سازنده پروفایل کانتکست هوش مصنوعی",
+  "subtitle": "ساخت دستورالعمل‌های سفارشی و دقیق برای مدل‌های ChatGPT، Claude و Gemini در کمتر از دو دقیقه.",
+  "form": {
+    "roleLabel": "نقش یا حوزه تخصصی اصلی شما:",
+    "rolePlaceholder": "مانند: مدیر ارشد سیستم‌ها، مهندس عمران، توسعه‌دهنده وب",
+    "toolsLabel": "ابزارها، فناوری‌ها یا استانداردهای اصلی که روزانه استفاده می‌کنید:",
+    "toolsPlaceholder": "مانند: Linux, Docker, WireGuard, استانداردهای IEEE, AutoCAD",
+    "toneLabel": "سبک پاسخ‌دهی مد نظر شما:",
+    "toneOptions": {
+      "direct": "مستقیم و فنی (بدون مقدمه و حاشیه، مستقیماً به اصل مطلب)",
+      "educational": "گام‌به‌گام و آموزشی (با توضیحات کامل و ساختاریافته)",
+      "conversational": "گفتگو محور و تعاملی"
+    },
+    "constraintsLabel": "مواردی که هوش مصنوعی **باید کاملاً از آن‌ها اجتناب کند**:",
+    "constraintsPlaceholder": "مانند: عدم تکرار سوال من، حذف مقدمه‌ها و موخره‌های عمومی، ارائه کامل کدها و کانفیگ‌ها بدون خلاصه‌سازی.",
+    "generateBtn": "تولید پروفایل"
+  },
+  "output": {
+    "title": "پروفایل کانتکست سفارشی شما:",
+    "copyBtn": "کپی در حافظه",
+    "copiedText": "کپی شد! ✓"
+  },
+  "guide": {
+    "title": "📍 محل قرار دادن پروفایل تولید شده:",
+    "steps": {
+      "chatgpt": [
+        "روی عکس پروفایل خود در گوشه پایین سمت چپ کلیک کنید.",
+        "گزینه Customize ChatGPT (یا Custom Instructions) را انتخاب کنید.",
+        "متن تولید شده را در بخش How would you like ChatGPT to respond؟ قرار دهید.",
+        "روی Save کلیک کنید."
+      ],
+      "claude": [
+        "روی نام/مخفف نام خود در گوشه پایین سمت چپ کلیک کنید.",
+        "گزینه Styles & Preferences را انتخاب کنید.",
+        "متن را در کادر Custom Instructions وارد کنید.",
+        "روی Save Preferences کلیک کنید."
+      ],
+      "gemini": [
+        "در Gemini روی آیکون تنظیمات (⚙️) در منوی سمت چپ کلیک کنید.",
+        "گزینه Saved Info / System Instructions را انتخاب کنید.",
+        "یا متن کپی شده را در اولین پیام چت جدید خود ارسال کنید."
+      ]
+    }
+  },
+  "template": {
+    "header": "### User Context & System Instructions",
+    "background": "**Background & Domain:**",
+    "role": "- Role:",
+    "tools": "- Tech Stack & Core Tools:",
+    "style": "**Response Style & Preferences:**",
+    "styleSub": "- Skip basic concepts or definitions unless explicitly requested. Assume domain-level familiarity.",
+    "constraints": "**Constraints & Rules:**",
+    "constraintsSub": "- Provide complete code, scripts, or configuration blocks without truncated placeholders."
+  }
+}
