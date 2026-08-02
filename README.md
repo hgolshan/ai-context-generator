@@ -70,14 +70,15 @@ Do not explain fundamentals unless I ask.
 ## ✨ Features
 
 - **⚡ Fast** — a complete profile in under two minutes
-- **🎯 Role presets** — IT & systems administration, network engineering, software
-  development, civil / mechanical / electrical engineering, language learning, and
+- **🎯 Role presets** — IT & systems administration, network engineering, software development, civil / mechanical / electrical engineering, language learning, and
   management, with more added over time
 - **🔒 Private by design** — 100% client-side. No backend, no analytics, no network
   requests. Verify it yourself in DevTools → Network
 - **🌍 Multi-language** — [English and Persian, with full RTL support], extensible via
   simple JSON files in `/locales`
 - **🌐 Zero dependencies** — pure HTML / CSS / JS. No build step, no `npm install`
+- - **🧠 Reasoning modes** — go beyond tone. Choose how the AI *thinks*:
+  Absolute (answer first, zero preamble), Chain-of-Thought (show reasoning), Socratic (guiding questions), or Critical Review (surface edge cases and flaws before proposing)
 
 ---
 
