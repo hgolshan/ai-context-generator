@@ -26,19 +26,19 @@
     "steps": {
       "chatgpt": [
         "روی عکس پروفایل خود در گوشه پایین سمت چپ کلیک کنید.",
-        "گزینه Customize ChatGPT (یا Custom Instructions) را انتخاب کنید.",
-        "متن تولید شده را در بخش How would you like ChatGPT to respond؟ قرار دهید.",
-        "روی Save کلیک کنید."
+        "گزینه <strong>Customize ChatGPT</strong> (یا Custom Instructions) را انتخاب کنید.",
+        "متن تولید شده را در بخش <code>How would you like ChatGPT to respond؟</code> قرار دهید.",
+        "روی <strong>Save</strong> کلیک کنید."
       ],
       "claude": [
         "روی نام/مخفف نام خود در گوشه پایین سمت چپ کلیک کنید.",
-        "گزینه Styles & Preferences را انتخاب کنید.",
-        "متن را در کادر Custom Instructions وارد کنید.",
-        "روی Save Preferences کلیک کنید."
+        "گزینه <strong>Styles & Preferences</strong> را انتخاب کنید.",
+        "متن را در کادر <strong>Custom Instructions</strong> وارد کنید.",
+        "روی <strong>Save Preferences</strong> کلیک کنید."
       ],
       "gemini": [
-        "در Gemini روی آیکون تنظیمات (⚙️) در منوی سمت چپ کلیک کنید.",
-        "گزینه Saved Info / System Instructions را انتخاب کنید.",
+        "در Gemini روی آیکون تنظیمات (<strong>⚙️</strong>) در منوی سمت چپ کلیک کنید.",
+        "گزینه <strong>Saved Info / System Instructions</strong> را انتخاب کنید.",
         "یا متن کپی شده را در اولین پیام چت جدید خود ارسال کنید."
       ]
     }
