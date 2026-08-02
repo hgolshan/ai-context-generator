@@ -12,6 +12,13 @@
       "educational": "Step-by-Step & Educational (Clear explanations)",
       "conversational": "Conversational & Collaborative"
     },
+    "modeLabel": "Answering / Processing Mode:",
+    "modeOptions": {
+      "absolute": "Absolute Mode (Direct answer immediately, skip meta-talk or planning)",
+      "cot": "Chain-of-Thought (Show step-by-step reasoning before final output)",
+      "socratic": "Socratic Mode (Ask guiding questions to lead to the solution)",
+      "critic": "Critical Review Mode (Analyze potential edge cases and flaws first)"
+    },
     "constraintsLabel": "Things the AI Must ALWAYS AVOID:",
     "constraintsPlaceholder": "e.g., Do not repeat my prompt back to me, skip generic intros/outros, show complete code/configs without truncated blocks.",
     "generateBtn": "Generate Profile"
@@ -50,6 +57,7 @@
     "tools": "- Tech Stack & Core Tools:",
     "style": "**Response Style & Preferences:**",
     "styleSub": "- Skip basic concepts or definitions unless explicitly requested. Assume domain-level familiarity.",
+    "mode": "**Answering & Reasoning Mode:**",
     "constraints": "**Constraints & Rules:**",
     "constraintsSub": "- Provide complete code, scripts, or configuration blocks without truncated placeholders."
   }
