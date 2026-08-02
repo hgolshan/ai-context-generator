@@ -26,19 +26,19 @@
     "steps": {
       "chatgpt": [
         "Click your Profile Picture in the bottom-left corner.",
-        "Select Customize ChatGPT (or Custom Instructions).",
-        "Paste the generated text into the box labeled: How would you like ChatGPT to respond?",
-        "Click Save."
+        "Select <strong>Customize ChatGPT</strong> (or Custom Instructions).",
+        "Paste the generated text into the box labeled: <code>How would you like ChatGPT to respond?</code>",
+        "Click <strong>Save</strong>."
       ],
       "claude": [
         "Click your Initials / Profile Name in the bottom-left corner.",
-        "Select Styles & Preferences (or open a Project for context scope).",
-        "Paste the generated profile into the Custom Instructions text area.",
-        "Click Save Preferences."
+        "Select <strong>Styles & Preferences</strong> (or open a Project for context scope).",
+        "Paste the generated profile into the <strong>Custom Instructions</strong> text area.",
+        "Click <strong>Save Preferences</strong>."
       ],
       "gemini": [
-        "Open Gemini and click Settings (⚙️) in the left sidebar.",
-        "Select Saved Info / System Instructions (if available in your tier).",
+        "Open Gemini and click <strong>Settings (⚙️)</strong> in the left sidebar.",
+        "Select <strong>Saved Info / System Instructions</strong> (if available in your tier).",
         "Alternatively, paste this profile into the first prompt of a new thread."
       ]
     }
