@@ -437,6 +437,11 @@ function generateProfile() {
     const tools = document.getElementById('tools').value || 'Standard tools';
     const toneVal = document.getElementById('tone').value;
     const toneText = currentLangData.form.toneOptions[toneVal];
+    
+    // Get Mode Value
+    const modeVal = document.getElementById('mode').value;
+    const modeText = currentLangData.form.modeOptions[modeVal];
+    
     const constraints = document.getElementById('constraints').value || 'None specified.';
 
     const t = currentLangData.template;
@@ -451,6 +456,9 @@ ${t.tools} ${tools}
 ${t.style}
 - ${toneText}
 ${t.styleSub}
+
+${t.mode}
+- ${modeText}
 
 ${t.constraints}
 - ${constraints}
