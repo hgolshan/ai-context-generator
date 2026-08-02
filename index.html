@@ -363,6 +363,23 @@ function switchTab(platform) {
     document.getElementById(`tab-${platform}`).classList.add('active');
     event.currentTarget.classList.add('active');
 }
+
+const translations = {
+  en: { /* English strings */ },
+  fa: { /* Persian strings from fa.json */ }
+};
+
+function changeLanguage(lang) {
+  const isRtl = lang === 'fa';
+  
+  // Toggle Page Direction for Persian (RTL)
+  document.body.dir = isRtl ? 'rtl' : 'ltr';
+  document.body.style.fontFamily = isRtl 
+    ? 'Vazirmatn, Tahoma, -apple-system, sans-serif' 
+    : '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+
+  // Update UI Elements with translated text...
+}
 </script>
 
 </body>
