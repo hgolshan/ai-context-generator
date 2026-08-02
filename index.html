@@ -312,6 +312,16 @@
             <textarea id="constraints" placeholder="e.g., Do not repeat my prompt back to me, skip generic intros/outros, show complete code/configs without truncated blocks."></textarea>
         </div>
 
+        <div class="form-group">
+            <label for="mode" id="ui-modeLabel">Answering / Processing Mode:</label>
+            <select id="mode">
+                <option value="absolute" id="ui-opt-absolute">Absolute Mode (Direct answer immediately, no meta-talk or planning)</option>
+                <option value="cot" id="ui-opt-cot">Chain-of-Thought (Show step-by-step reasoning before final output)</option>
+                <option value="socratic" id="ui-opt-socratic">Socratic Mode (Ask guiding questions to lead to the solution)</option>
+                <option value="critic" id="ui-opt-critic">Critical Review Mode (Analyze potential edge cases and flaws first)</option>
+            </select>
+        </div>
+
         <button type="button" class="btn-submit" id="ui-generateBtn" onclick="generateProfile()">Generate Profile</button>
     </form>
 
