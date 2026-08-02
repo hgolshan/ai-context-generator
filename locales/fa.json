@@ -12,6 +12,13 @@
       "educational": "گام‌به‌گام و آموزشی (با توضیحات کامل و ساختاریافته)",
       "conversational": "گفتگو محور و تعاملی"
     },
+    "modeLabel": "حالت پاسخ‌دهی و پردازش:",
+    "modeOptions": {
+      "absolute": "حالت مطلق (پاسخ کاملاً مستقیم بدون مقدمه‌چینی، برنامه‌ریزی یا عبارت‌های عمومی)",
+      "cot": "زنجیره تفکر (ارائه استدلال و تحلیل گام‌به‌گام قبل از خروجی نهایی)",
+      "socratic": "حالت سقراطی (طرح سوالات راهنما برای رسیدن به پاسخ اصلی)",
+      "critic": "حالت بررسی انتقادی (تحلیل باگ‌ها، حالت‌های خاص و چالش‌های احتمالی در ابتدا)"
+    },
     "constraintsLabel": "مواردی که هوش مصنوعی **باید کاملاً از آن‌ها اجتناب کند**:",
     "constraintsPlaceholder": "مانند: عدم تکرار سوال من، حذف مقدمه‌ها و موخره‌های عمومی، ارائه کامل کدها و کانفیگ‌ها بدون خلاصه‌سازی.",
     "generateBtn": "تولید پروفایل"
@@ -50,6 +57,7 @@
     "tools": "- Tech Stack & Core Tools:",
     "style": "**Response Style & Preferences:**",
     "styleSub": "- Skip basic concepts or definitions unless explicitly requested. Assume domain-level familiarity.",
+    "mode": "**Answering & Reasoning Mode:**",
     "constraints": "**Constraints & Rules:**",
     "constraintsSub": "- Provide complete code, scripts, or configuration blocks without truncated placeholders."
   }
