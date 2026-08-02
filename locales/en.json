@@ -1,0 +1,56 @@
+{
+  "title": "🤖 AI Context Profile Generator",
+  "subtitle": "Generate custom context instructions tailored for your daily workflows in under two minutes.",
+  "form": {
+    "roleLabel": "Primary Role or Domain:",
+    "rolePlaceholder": "e.g., Senior Systems Administrator, Civil Engineer, Web Developer",
+    "toolsLabel": "Core Tools, Technologies, or Standards Used Daily:",
+    "toolsPlaceholder": "e.g., Linux, Docker, WireGuard, IEEE Standards, AutoCAD",
+    "toneLabel": "Preferred Communication Style:",
+    "toneOptions": {
+      "direct": "Direct & Technical (No fluff, straight to solution)",
+      "educational": "Step-by-Step & Educational (Clear explanations)",
+      "conversational": "Conversational & Collaborative"
+    },
+    "constraintsLabel": "Things the AI Must ALWAYS AVOID:",
+    "constraintsPlaceholder": "e.g., Do not repeat my prompt back to me, skip generic intros/outros, show complete code/configs without truncated blocks.",
+    "generateBtn": "Generate Profile"
+  },
+  "output": {
+    "title": "Your Custom Instruction Profile:",
+    "copyBtn": "Copy to Clipboard",
+    "copiedText": "Copied! ✓"
+  },
+  "guide": {
+    "title": "📍 Where to Paste Your Profile:",
+    "steps": {
+      "chatgpt": [
+        "Click your Profile Picture in the bottom-left corner.",
+        "Select Customize ChatGPT (or Custom Instructions).",
+        "Paste the generated text into the box labeled: How would you like ChatGPT to respond?",
+        "Click Save."
+      ],
+      "claude": [
+        "Click your Initials / Profile Name in the bottom-left corner.",
+        "Select Styles & Preferences (or open a Project for context scope).",
+        "Paste the generated profile into the Custom Instructions text area.",
+        "Click Save Preferences."
+      ],
+      "gemini": [
+        "Open Gemini and click Settings (⚙️) in the left sidebar.",
+        "Select Saved Info / System Instructions (if available in your tier).",
+        "Alternatively, paste this profile into the first prompt of a new thread."
+      ]
+    }
+  },
+  "template": {
+    "header": "### User Context & System Instructions",
+    "background": "**Background & Domain:**",
+    "role": "- Role:",
+    "tools": "- Tech Stack & Core Tools:",
+    "style": "**Response Style & Preferences:**",
+    "styleSub": "- Skip basic concepts or definitions unless explicitly requested. Assume domain-level familiarity.",
+    "constraints": "**Constraints & Rules:**",
+    "constraintsSub": "- Provide complete code, scripts, or configuration blocks without truncated placeholders."
+  }
+}
