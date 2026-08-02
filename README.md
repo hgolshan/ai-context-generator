@@ -27,11 +27,11 @@ Most users interact with AI models using default settings, resulting in generic,
 
 ## 🚀 Live Demo & How to Use
 
-Try the generator live on [GitHub Pages](https://your-username.github.io/ai-context-generator/).
+Try the generator live on [GitHub Pages](https://hgolshan.github.io/ai-context-generator/).
 
 ### Quickstart Guide:
 1. Open the interactive form on the web page.
-2. Enter your primary role, key tools/technologies, preferred communication style, and rules/constraints (e.g., *"skip introductions", "provide complete configs"*).
+2. Enter your primary role, key tools/technologies, preferred communication style, and rules/constraints (e.g., *"skip introductions"*, *"provide complete configs"*).
 3. Click **Generate Profile**.
 4. Click **Copy to Clipboard**.
 5. Paste the output into your AI platform's custom instruction field (e.g., ChatGPT's *Custom Instructions*, Claude's *Project Instructions*, or Gemini's user preferences).
@@ -45,4 +45,4 @@ Because this repository contains a zero-dependency static web app, no build step
 ### Running Locally
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/your-username/ai-context-generator.git](https://github.com/your-username/ai-context-generator.git)
+   git clone [https://github.com/hgolshan/ai-context-generator.git](https://github.com/hgolshan/ai-context-generator.git)
