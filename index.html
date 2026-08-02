@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Context Profile Generator</title>
+    <title id="docTitle">AI Context Profile Generator</title>
+    <!-- Include Vazirmatn font for crisp Persian typography -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
     <style>
         :root {
             --bg-color: #f6f8fa;
@@ -23,7 +25,12 @@
             color: var(--text-main);
             margin: 0;
             padding: 24px 16px;
-            line-height: 1.5;
+            line-height: 1.6;
+        }
+
+        /* Persian Font Override when in RTL mode */
+        body[dir="rtl"] {
+            font-family: Vazirmatn, Tahoma, sans-serif;
         }
 
         .container {
@@ -36,18 +43,34 @@
             box-shadow: 0 3px 6px rgba(140,149,159,0.1);
         }
 
-        h1 {
-            font-size: 24px;
-            margin-top: 0;
-            margin-bottom: 8px;
+        .header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 22px;
+            margin: 0;
+        }
+
+        .lang-select {
+            padding: 6px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 13px;
+            background-color: var(--bg-color);
+            cursor: pointer;
         }
 
         p.subtitle {
             color: var(--text-muted);
             margin-top: 0;
             margin-bottom: 24px;
+            font-size: 14.5px;
         }
 
         .form-group {
@@ -69,6 +92,7 @@
             box-sizing: border-box;
             font-size: 14px;
             color: var(--text-main);
+            font-family: inherit;
         }
 
         input:focus, select:focus, textarea:focus {
@@ -93,6 +117,7 @@
             cursor: pointer;
             width: 100%;
             transition: background 0.2s;
+            font-family: inherit;
         }
 
         .btn-submit:hover {
@@ -106,7 +131,6 @@
             border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 20px;
-            position: relative;
         }
 
         .output-header {
@@ -133,6 +157,8 @@
             margin: 0;
             max-height: 250px;
             overflow-y: auto;
+            direction: ltr; /* Keeps markdown code structural regardless of page language */
+            text-align: left;
         }
 
         .btn-copy {
@@ -144,13 +170,14 @@
             font-weight: 600;
             border-radius: 6px;
             cursor: pointer;
+            font-family: inherit;
         }
 
         .btn-copy:hover {
             background-color: var(--accent-hover);
         }
 
-        /* Platform Guide Section */
+        /* Guide Section */
         .guide-section {
             margin-top: 24px;
             border-top: 1px solid var(--border-color);
@@ -161,7 +188,6 @@
             margin-top: 0;
             margin-bottom: 12px;
             font-size: 15px;
-            color: var(--text-main);
         }
 
         .tabs {
@@ -180,6 +206,7 @@
             color: var(--text-muted);
             cursor: pointer;
             border-bottom: 2px solid transparent;
+            font-family: inherit;
         }
 
         .tab-btn.active {
@@ -201,7 +228,7 @@
 
         .guide-steps {
             margin: 0;
-            padding-left: 20px;
+            padding-inline-start: 20px;
             font-size: 13.5px;
         }
 
@@ -214,60 +241,63 @@
             padding: 2px 6px;
             border-radius: 4px;
             font-size: 12px;
+            direction: ltr;
+            display: inline-block;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🤖 AI Context Profile Generator</h1>
-    <p class="subtitle">Generate custom context instructions tailored for your daily workflows.</p>
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-  <span style="font-size: 12px; color: var(--text-muted);">Language / زبان:</span>
-  <select id="langSelect" onchange="changeLanguage(this.value)" style="width: auto; padding: 4px 8px;">
-    <option value="en">English</option>
-    <option value="fa">فارسی (Persian)</option>
-  </select>
-</div>
+    <div class="header-bar">
+        <h1 id="ui-title">🤖 AI Context Profile Generator</h1>
+        <select id="langSelect" class="lang-select" onchange="changeLanguage(this.value)">
+            <option value="en" selected>English</option>
+            <option value="fa">فارسی</option>
+        </select>
+    </div>
+
+    <p class="subtitle" id="ui-subtitle">Generate custom context instructions tailored for your daily workflows.</p>
+
     <form id="profileForm">
         <div class="form-group">
-            <label for="role">Primary Role or Domain:</label>
+            <label for="role" id="ui-roleLabel">Primary Role or Domain:</label>
             <input type="text" id="role" placeholder="e.g., Senior Systems Administrator, Civil Engineer, Web Developer">
         </div>
 
         <div class="form-group">
-            <label for="tools">Core Tools, Technologies, or Standards Used Daily:</label>
+            <label for="tools" id="ui-toolsLabel">Core Tools, Technologies, or Standards Used Daily:</label>
             <input type="text" id="tools" placeholder="e.g., Linux, Docker, WireGuard, IEEE Standards, AutoCAD">
         </div>
 
         <div class="form-group">
-            <label for="tone">Preferred Communication Style:</label>
+            <label for="tone" id="ui-toneLabel">Preferred Communication Style:</label>
             <select id="tone">
-                <option value="Direct, precise, and highly technical. Skip high-level summaries and lead straight to solutions.">Direct & Technical (No fluff, straight to solution)</option>
-                <option value="Educational and step-by-step with clear structural breakdowns.">Step-by-Step & Educational (Clear explanations)</option>
-                <option value="Conversational, collaborative, and interactive.">Conversational & Collaborative</option>
+                <option value="direct" id="ui-opt-direct">Direct & Technical (No fluff, straight to solution)</option>
+                <option value="educational" id="ui-opt-edu">Step-by-Step & Educational (Clear explanations)</option>
+                <option value="conversational" id="ui-opt-conv">Conversational & Collaborative</option>
             </select>
         </div>
 
         <div class="form-group">
-            <label for="constraints">Things the AI Must ALWAYS AVOID:</label>
+            <label for="constraints" id="ui-constraintsLabel">Things the AI Must ALWAYS AVOID:</label>
             <textarea id="constraints" placeholder="e.g., Do not repeat my prompt back to me, skip generic intros/outros, show complete code/configs without truncated blocks."></textarea>
         </div>
 
-        <button type="button" class="btn-submit" onclick="generateProfile()">Generate Profile</button>
+        <button type="button" class="btn-submit" id="ui-generateBtn" onclick="generateProfile()">Generate Profile</button>
     </form>
 
     <!-- Output Container -->
     <div class="output-box" id="outputContainer" style="display:none;">
         <div class="output-header">
-            <h3>Your Custom Instruction Profile:</h3>
+            <h3 id="ui-outputTitle">Your Custom Instruction Profile:</h3>
             <button class="btn-copy" id="copyBtn" onclick="copyToClipboard()">Copy to Clipboard</button>
         </div>
         <pre id="outputCode"></pre>
 
         <!-- Where to Paste Guide -->
         <div class="guide-section">
-            <h4>📍 Where to Paste Your Profile:</h4>
+            <h4 id="ui-guideTitle">📍 Where to Paste Your Profile:</h4>
             
             <div class="tabs">
                 <button class="tab-btn active" onclick="switchTab('chatgpt')">ChatGPT</button>
@@ -276,60 +306,114 @@
             </div>
 
             <div id="tab-chatgpt" class="tab-content active">
-                <ol class="guide-steps">
-                    <li>Click your <strong>Profile Picture</strong> in the bottom-left corner.</li>
-                    <li>Select <strong>Customize ChatGPT</strong> (or <em>Custom Instructions</em>).</li>
-                    <li>Paste the generated text into the box labeled: <code>How would you like ChatGPT to respond?</code></li>
-                    <li>Click <strong>Save</strong>.</li>
-                </ol>
+                <ol class="guide-steps" id="ui-steps-chatgpt"></ol>
             </div>
 
             <div id="tab-claude" class="tab-content">
-                <ol class="guide-steps">
-                    <li>Click your <strong>Initials / Profile Name</strong> in the bottom-left corner.</li>
-                    <li>Select <strong>Styles & Preferences</strong> (or open a <em>Project</em> for context scope).</li>
-                    <li>Paste the generated profile into the <strong>Custom Instructions</strong> text area.</li>
-                    <li>Click <strong>Save Preferences</strong>.</li>
-                </ol>
+                <ol class="guide-steps" id="ui-steps-claude"></ol>
             </div>
 
             <div id="tab-gemini" class="tab-content">
-                <ol class="guide-steps">
-                    <li>Open Gemini and click <strong>Settings (⚙️)</strong> in the left sidebar.</li>
-                    <li>Select <strong>Saved Info / System Instructions</strong> (if available in your tier).</li>
-                    <li>Alternatively, paste this profile into the first prompt of a new thread: <br><code>"Use the following instructions for all future answers in this chat: [Paste Profile]"</code></li>
-                </ol>
+                <ol class="guide-steps" id="ui-steps-gemini"></ol>
             </div>
         </div>
     </div>
 </div>
 
 <script>
+let currentLangData = null;
+let currentLang = 'en';
+
+// Load language JSON asynchronously
+async function changeLanguage(lang) {
+    currentLang = lang;
+    try {
+        const response = await fetch(`./locales/${lang}.json`);
+        if (!response.ok) throw new Error(`Could not load ${lang}.json`);
+        currentLangData = await response.json();
+
+        // Update direction
+        const isRtl = lang === 'fa';
+        document.body.dir = isRtl ? 'rtl' : 'ltr';
+
+        // Update UI Text Elements
+        document.getElementById('docTitle').innerText = currentLangData.title;
+        document.getElementById('ui-title').innerText = currentLangData.title;
+        document.getElementById('ui-subtitle').innerText = currentLangData.subtitle;
+
+        document.getElementById('ui-roleLabel').innerText = currentLangData.form.roleLabel;
+        document.getElementById('role').placeholder = currentLangData.form.rolePlaceholder;
+
+        document.getElementById('ui-toolsLabel').innerText = currentLangData.form.toolsLabel;
+        document.getElementById('tools').placeholder = currentLangData.form.toolsPlaceholder;
+
+        document.getElementById('ui-toneLabel').innerText = currentLangData.form.toneLabel;
+        document.getElementById('ui-opt-direct').innerText = currentLangData.form.toneOptions.direct;
+        document.getElementById('ui-opt-edu').innerText = currentLangData.form.toneOptions.educational;
+        document.getElementById('ui-opt-conv').innerText = currentLangData.form.toneOptions.conversational;
+
+        document.getElementById('ui-constraintsLabel').innerText = currentLangData.form.constraintsLabel;
+        document.getElementById('constraints').placeholder = currentLangData.form.constraintsPlaceholder;
+
+        document.getElementById('ui-generateBtn').innerText = currentLangData.form.generateBtn;
+
+        document.getElementById('ui-outputTitle').innerText = currentLangData.output.title;
+        document.getElementById('copyBtn').innerText = currentLangData.output.copyBtn;
+        document.getElementById('ui-guideTitle').innerText = currentLangData.guide.title;
+
+        // Populate steps lists
+        populateSteps('ui-steps-chatgpt', currentLangData.guide.steps.chatgpt);
+        populateSteps('ui-steps-claude', currentLangData.guide.steps.claude);
+        populateSteps('ui-steps-gemini', currentLangData.guide.steps.gemini);
+
+        // Regenerate markdown if output container is currently visible
+        if (document.getElementById('outputContainer').style.display !== 'none') {
+            generateProfile();
+        }
+
+    } catch (error) {
+        console.error("Language loading error:", error);
+    }
+}
+
+function populateSteps(elementId, stepsArray) {
+    const listContainer = document.getElementById(elementId);
+    listContainer.innerHTML = '';
+    stepsArray.forEach(step => {
+        const li = document.createElement('li');
+        li.innerHTML = step;
+        listContainer.appendChild(li);
+    });
+}
+
 function generateProfile() {
+    if (!currentLangData) return;
+
     const role = document.getElementById('role').value || 'Professional';
-    const tools = document.getElementById('tools').value || 'Standard industry tools';
-    const tone = document.getElementById('tone').value;
-    const constraints = document.getElementById('constraints').value || 'Skip unnecessary conversational filler and intros.';
+    const tools = document.getElementById('tools').value || 'Standard tools';
+    const toneVal = document.getElementById('tone').value;
+    const toneText = currentLangData.form.toneOptions[toneVal];
+    const constraints = document.getElementById('constraints').value || 'None specified.';
+
+    const t = currentLangData.template;
 
     const markdownOutput = 
-`### User Context & System Instructions
+`${t.header}
 
-**Background & Domain:**
-- Role: ${role}
-- Tech Stack & Core Tools: ${tools}
+${t.background}
+${t.role} ${role}
+${t.tools} ${tools}
 
-**Response Style & Preferences:**
-- ${tone}
-- Skip basic concepts or definitions unless explicitly requested. Assume domain-level familiarity.
+${t.style}
+- ${toneText}
+${t.styleSub}
 
-**Constraints & Rules:**
+${t.constraints}
 - ${constraints}
-- Provide complete code, scripts, or configuration blocks without truncated placeholders.`;
+${t.constraintsSub}`;
 
     document.getElementById('outputCode').innerText = markdownOutput;
     document.getElementById('outputContainer').style.display = 'block';
-
-    // Smooth scroll to output
     document.getElementById('outputContainer').scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -338,48 +422,28 @@ function copyToClipboard() {
     const copyBtn = document.getElementById('copyBtn');
 
     navigator.clipboard.writeText(text).then(() => {
-        copyBtn.innerText = 'Copied! ✓';
+        copyBtn.innerText = currentLangData.output.copiedText;
         copyBtn.style.backgroundColor = '#1f883d';
         
         setTimeout(() => {
-            copyBtn.innerText = 'Copy to Clipboard';
+            copyBtn.innerText = currentLangData.output.copyBtn;
             copyBtn.style.backgroundColor = '#0969da';
         }, 2000);
     });
 }
 
 function switchTab(platform) {
-    // Hide all tab contents
-    document.querySelectorAll('.tab-content').forEach(content => {
-        content.classList.remove('active');
-    });
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
 
-    // Deactivate all buttons
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-
-    // Activate selected tab & content
     document.getElementById(`tab-${platform}`).classList.add('active');
     event.currentTarget.classList.add('active');
 }
 
-const translations = {
-  en: { /* English strings */ },
-  fa: { /* Persian strings from fa.json */ }
-};
-
-function changeLanguage(lang) {
-  const isRtl = lang === 'fa';
-  
-  // Toggle Page Direction for Persian (RTL)
-  document.body.dir = isRtl ? 'rtl' : 'ltr';
-  document.body.style.fontFamily = isRtl 
-    ? 'Vazirmatn, Tahoma, -apple-system, sans-serif' 
-    : '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-
-  // Update UI Elements with translated text...
-}
+// Initial load
+window.addEventListener('DOMContentLoaded', () => {
+    changeLanguage('en');
+});
 </script>
 
 </body>
