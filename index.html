@@ -399,6 +399,12 @@ async function changeLanguage(lang) {
         document.getElementById('copyBtn').innerText = currentLangData.output.copyBtn;
         document.getElementById('ui-guideTitle').innerText = currentLangData.guide.title;
 
+        document.getElementById('ui-modeLabel').innerText = currentLangData.form.modeLabel;
+        document.getElementById('ui-opt-absolute').innerText = currentLangData.form.modeOptions.absolute;
+        document.getElementById('ui-opt-cot').innerText = currentLangData.form.modeOptions.cot;
+        document.getElementById('ui-opt-socratic').innerText = currentLangData.form.modeOptions.socratic;
+        document.getElementById('ui-opt-critic').innerText = currentLangData.form.modeOptions.critic;
+
         // Populate steps lists
         populateSteps('ui-steps-chatgpt', currentLangData.guide.steps.chatgpt);
         populateSteps('ui-steps-claude', currentLangData.guide.steps.claude);
